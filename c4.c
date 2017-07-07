@@ -24,8 +24,23 @@ void c4Clean(board *b) {
     memset(b->holes,EMPTY_CIRCLE,sizeof(b->holes));
 }
 
+void c4Copy(board *dst, board *src) {
+    memcpy(dst->holes,src->holes,sizeof(dst->holes));
+}
+
 int c4ColIsFull(board *b, int col) {
     return c4Get(b,col,5) != EMPTY_CIRCLE;
+}
+
+int c4Drop(board *b, int col, int value) {
+    if (c4ColIsFull(b,col)) return 0;
+    for (int level = 0; level < 6; level++) {
+        if (c4Get(b,col,level) == EMPTY_CIRCLE) {
+            c4Set(b,col,level,value);
+            break;
+        }
+    }
+    return 1;
 }
 
 void c4Print(board *b) {
@@ -42,5 +57,8 @@ void c4Print(board *b) {
 int main(void) {
     board b;
     c4Clean(&b);
+    c4Drop(&b,3,RED_CIRCLE);
+    c4Drop(&b,3,RED_CIRCLE);
+    c4Drop(&b,4,YELLOW_CIRCLE);
     c4Print(&b);
 }
