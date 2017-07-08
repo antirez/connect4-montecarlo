@@ -211,7 +211,7 @@ int c4SuggestMove(board *b, int tomove) {
 }
 
 /* Play interactively with the user. */
-void c4play(void) {
+void c4Play(void) {
     board b;
     c4Clean(&b);
 
@@ -241,5 +241,5 @@ void c4play(void) {
 
 int main(void) {
     srand(time(NULL));
-    c4play();
+    c4Play();
 }
