@@ -100,7 +100,7 @@ void c4Print(board *b) {
     for (int level = 5; level >= 0; level--) {
         for (int col = 0; col < 7; col++) {
             int color = c4Get(b,col,level);
-            char *set = ".YR";
+            char *set = " YR";
             printf("[%c]",set[color]);
         }
         printf("\n");
