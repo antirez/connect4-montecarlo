@@ -187,7 +187,7 @@ int c4SuggestMove(board *b, int tomove) {
             board copy;
             c4Copy(&copy,b);
             c4Drop(&copy,move,tomove);
-            /* If this is a winning move there is nothign to search
+            /* If this is a winning move there is nothing to search
              * further, just return it. */
             if (c4GetWinner(&copy) == tomove) return move;
             int next = (tomove == CIRCLE_YELLOW) ? CIRCLE_RED : CIRCLE_YELLOW;
