@@ -190,10 +190,10 @@ int c4SuggestMove(board *b, int tomove) {
             /* If this is a winning move there is nothign to search
              * further, just return it. */
             if (c4GetWinner(&copy) == tomove) return move;
-            tomove = (tomove == CIRCLE_YELLOW) ? CIRCLE_RED : CIRCLE_YELLOW;
-            int winner = c4RandomGame(&copy,tomove);
+            int next = (tomove == CIRCLE_YELLOW) ? CIRCLE_RED : CIRCLE_YELLOW;
+            int winner = c4RandomGame(&copy,next);
             if (winner == CIRCLE_YELLOW || winner == CIRCLE_RED) {
-                if (winner != tomove) {
+                if (winner == tomove) {
                     won++;
                 } else {
                     lost++;
